@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--theme-bg);
+  --color-bg-elevated: var(--theme-bg-elevated);
+  --color-bg-card: var(--theme-bg-card);
+  --color-border: var(--theme-border);
+  --color-border-subtle: var(--theme-border-subtle);
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --color-text-dim: var(--theme-text-dim);
+  --color-accent: var(--theme-accent);
+  --color-accent-muted: var(--theme-accent-muted);
+  --color-accent-glow: var(--theme-accent-glow);
+  --color-nav-bg: var(--theme-nav-bg);
+
+  /* Fonts */
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  :root,
+  html {
+    --theme-bg: #f5f3ee;
+    --theme-bg-elevated: #eceae4;
+    --theme-bg-card: #ffffff;
+    --theme-border: #ccc8bf;
+    --theme-border-subtle: #dbd8d0;
+    --theme-text: #1a1a1e;
+    --theme-text-muted: #4a4a56;
+    --theme-text-dim: #6e6e7a;
+    --theme-accent: #8c6a2a;
+    --theme-accent-muted: rgba(140, 106, 42, 0.12);
+    --theme-accent-glow: rgba(140, 106, 42, 0.06);
+    --theme-nav-bg: rgba(245, 243, 238, 0.88);
+    color-scheme: light;
+  }
+
+  html.dark {
+    --theme-bg: #111111;
+    --theme-bg-elevated: #171717;
+    --theme-bg-card: #1c1c1c;
+    --theme-border: #3a342d;
+    --theme-border-subtle: #2b2722;
+    --theme-text: #f2eee7;
+    --theme-text-muted: #d2cbc0;
+    --theme-text-dim: #aea496;
+    --theme-accent: #d4af6e;
+    --theme-accent-muted: rgba(212, 175, 110, 0.16);
+    --theme-accent-glow: rgba(212, 175, 110, 0.08);
+    --theme-nav-bg: rgba(17, 17, 17, 0.92);
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.mobile-nav-open,
+  html.mobile-nav-open body {
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-body);
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  main:focus {
+    outline: none;
+  }
+}
+
+@layer components {
+  .surface-card {
+    background: var(--color-bg-card);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  html.dark .surface-card {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-card) 100%, transparent),
+      color-mix(in srgb, var(--color-bg-elevated) 88%, black 12%)
+    );
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.015) inset,
+      0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .surface-card-strong {
+    background: var(--color-bg-card);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  }
+
+  html.dark .surface-card-strong {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-card) 100%, transparent),
+      color-mix(in srgb, var(--color-bg-elevated) 86%, black 14%)
+    );
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.02) inset,
+      0 18px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  .surface-chip {
+    background: color-mix(in srgb, var(--color-bg-card) 84%, black 16%);
+  }
+
+  html:not(.dark) .surface-chip {
+    background: color-mix(in srgb, var(--color-bg-card) 96%, var(--color-bg-elevated) 4%);
+  }
+
+  .surface-metric {
+    background: color-mix(in srgb, var(--color-bg-card) 88%, black 12%);
+  }
+
+  html:not(.dark) .surface-metric {
+    background: color-mix(in srgb, var(--color-bg-card) 96%, var(--color-bg-elevated) 4%);
+  }
+
+  .premium-panel {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-card) 100%, transparent),
+      color-mix(in srgb, var(--color-bg-elevated) 8%, var(--color-bg-card) 92%)
+    );
+    box-shadow:
+      0 1px 2px rgba(17, 17, 17, 0.04),
+      0 22px 48px rgba(17, 17, 17, 0.08);
+  }
+
+  html.dark .premium-panel {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-card) 100%, transparent),
+      color-mix(in srgb, var(--color-bg-elevated) 86%, black 14%)
+    );
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.02) inset,
+      0 22px 56px rgba(0, 0, 0, 0.26);
+  }
+}
