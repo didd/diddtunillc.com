@@ -71,7 +71,7 @@ export function ContactForm() {
 
   if (status.type === "success") {
     return (
-      <div className="rounded-[1.6rem] border border-border bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-bg-card)_100%,transparent),color-mix(in_srgb,var(--color-bg-elevated)_12%,var(--color-bg-card)_88%))] p-10 shadow-[0_18px_50px_rgba(0,0,0,0.12)]">
+      <div className="rounded-[1.6rem] border border-border bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-bg-card)_100%,transparent),color-mix(in_srgb,var(--color-bg-elevated)_12%,var(--color-bg-card)_88%))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.12)] sm:p-10">
         <div className="flex h-full flex-col justify-center">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/25 bg-accent-muted px-3 py-1 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-accent">
             Inquiry received
@@ -109,7 +109,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-[1.6rem] border border-border bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-bg-card)_100%,transparent),color-mix(in_srgb,var(--color-bg-elevated)_12%,var(--color-bg-card)_88%))] p-10 shadow-[0_18px_50px_rgba(0,0,0,0.12)]">
+    <div className="rounded-[1.6rem] border border-border bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-bg-card)_100%,transparent),color-mix(in_srgb,var(--color-bg-elevated)_12%,var(--color-bg-card)_88%))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.12)] sm:p-10">
       <form
         noValidate={false}
         aria-label="Project inquiry form"
@@ -125,7 +125,7 @@ export function ContactForm() {
           aria-hidden="true"
         />
 
-        <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
           <div>
             <div className="font-mono text-[0.76rem] uppercase tracking-[0.14em] text-accent">
               Project inquiry
@@ -142,7 +142,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
           <Field htmlFor="name" label="Your Name" required>
             <TextInput
               type="text"
@@ -168,7 +168,7 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:mt-5 sm:grid-cols-2 sm:gap-5">
           <Field htmlFor="company" label="Company">
             <TextInput
               type="text"
@@ -193,7 +193,7 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-4 sm:mt-5">
           <Field htmlFor="service" label="Service Needed">
             <SelectInput id="service" name="service" defaultValue="" required>
               <option value="" disabled>
@@ -208,7 +208,7 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-4 sm:mt-5">
           <Field htmlFor="message" label="Project Details" required>
             <TextArea
               id="message"
